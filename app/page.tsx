@@ -1,3 +1,16 @@
+import Image from "next/image";
+
+const SCREENSHOTS = [
+  { file: "/screenshots/s1.png", caption: "Your portfolio, at a glance" },
+  { file: "/screenshots/s2.png", caption: "Track every stock in real-time" },
+  { file: "/screenshots/s3.png", caption: "Discover stocks to invest in" },
+  { file: "/screenshots/s4.png", caption: "Plan trades with your AI advisor" },
+  { file: "/screenshots/s5.png", caption: "Keep an eye on the news" },
+  { file: "/screenshots/s6.png", caption: "Learn to invest like a pro" },
+  { file: "/screenshots/s7.png", caption: "Compete against friends & strangers" },
+  { file: "/screenshots/s8.png", caption: "Start with €1,000,000 in virtual cash" },
+];
+
 const TICKERS = [
   { symbol: "AAPL",  price: "172.42", change: "+1.24%", up: true  },
   { symbol: "TSLA",  price: "245.18", change: "-0.87%", up: false },
@@ -57,6 +70,7 @@ export default function Home() {
         <div style={{ display: "flex", gap: 32, fontSize: 14 }}>
           <a href="#features" className="nav-link">Features</a>
           <a href="#how" className="nav-link">How it works</a>
+          <a href="#pricing" className="nav-link">Pricing</a>
         </div>
         <a href="#download" className="cta-btn" style={{ padding: "10px 22px", fontSize: 14 }}>
           Download
@@ -228,6 +242,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Pricing ────────────────────────────────────────────────── */}
+      <section id="pricing" style={{ padding: "100px 24px", textAlign: "center" }}>
+        <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", color: "#0a84ff", textTransform: "uppercase", marginBottom: 12 }}>Pricing</p>
+        <h2 style={{ fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 900, letterSpacing: "-0.04em", marginBottom: 16 }}>
+          Start free. Always.
+        </h2>
+        <p style={{ fontSize: 17, color: "rgba(255,255,255,0.5)", marginBottom: 60, maxWidth: 500, margin: "0 auto 60px" }}>
+          Invest is completely free to download and use. No credit card, no subscription, no hidden fees.
+        </p>
+        <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap", maxWidth: 900, margin: "0 auto" }}>
+          {/* Free tier */}
+          <div style={{
+            flex: "1 1 340px", maxWidth: 400, padding: "36px 32px", borderRadius: 24,
+            border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.03)",
+            textAlign: "left",
+          }}>
+            <p style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.4)", marginBottom: 8 }}>FREE</p>
+            <p style={{ fontSize: 42, fontWeight: 900, marginBottom: 4 }}>€0</p>
+            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", marginBottom: 28 }}>forever</p>
+            {["€1,000,000 virtual portfolio", "Live prices for 10,000+ stocks", "AI investment advisor", "Auto orders & limit orders", "Leaderboard & badges", "Education hub & lessons"].map(f => (
+              <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <span style={{ color: "#30d158", fontSize: 16 }}>✓</span>
+                <span style={{ fontSize: 14, color: "rgba(255,255,255,0.7)" }}>{f}</span>
+              </div>
+            ))}
+            <a href="#download" className="cta-btn" style={{ display: "block", textAlign: "center", marginTop: 28, padding: "14px 24px", fontSize: 15 }}>
+              Download free
+            </a>
+          </div>
+          {/* Pro tier */}
+          <div style={{
+            flex: "1 1 340px", maxWidth: 400, padding: "36px 32px", borderRadius: 24,
+            border: "1px solid rgba(10,132,255,0.4)", background: "rgba(10,132,255,0.06)",
+            textAlign: "left", position: "relative",
+          }}>
+            <div style={{
+              position: "absolute", top: 20, right: 20,
+              background: "linear-gradient(135deg, #0a84ff, #30d158)",
+              borderRadius: 20, padding: "4px 12px", fontSize: 11, fontWeight: 700, color: "#fff",
+            }}>COMING SOON</div>
+            <p style={{ fontSize: 13, fontWeight: 600, color: "#0a84ff", marginBottom: 8 }}>PRO</p>
+            <p style={{ fontSize: 42, fontWeight: 900, marginBottom: 4 }}>€4.99</p>
+            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", marginBottom: 28 }}>per month</p>
+            {["Everything in Free", "Full financials & revenue charts", "EPS, P/E, margin ratios", "All geopolitics news sources", "Early access to new features"].map(f => (
+              <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <span style={{ color: "#0a84ff", fontSize: 16 }}>✓</span>
+                <span style={{ fontSize: 14, color: "rgba(255,255,255,0.7)" }}>{f}</span>
+              </div>
+            ))}
+            <div style={{
+              display: "block", textAlign: "center", marginTop: 28, padding: "14px 24px", fontSize: 15,
+              borderRadius: 999, border: "1px solid rgba(10,132,255,0.4)",
+              color: "rgba(255,255,255,0.4)", cursor: "default",
+            }}>
+              Notify me when available
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Final CTA ──────────────────────────────────────────────── */}
       <section style={{ padding: "100px 24px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{
@@ -268,7 +342,7 @@ export default function Home() {
           Stock Market Simulator — No real money is used or at risk. For educational purposes only.
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 16 }}>
-          {[["Privacy Policy", "/privacy"], ["Terms", "/terms"], ["Contact", "mailto:hello@investapp.com"]].map(([label, href]) => (
+          {[["Privacy Policy", "/privacy"], ["Terms", "/terms"], ["Support", "/support"]].map(([label, href]) => (
             <a key={label} href={href} className="footer-link">{label}</a>
           ))}
         </div>
