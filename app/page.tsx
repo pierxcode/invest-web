@@ -273,7 +273,7 @@ export default function Home() {
           </div>
           {/* Pro tier */}
           <div style={{
-            flex: "1 1 340px", maxWidth: 400, padding: "36px 32px", borderRadius: 24,
+            flex: "1 1 280px", maxWidth: 360, padding: "36px 32px", borderRadius: 24,
             border: "1px solid rgba(10,132,255,0.4)", background: "rgba(10,132,255,0.06)",
             textAlign: "left", position: "relative",
           }}>
@@ -294,6 +294,35 @@ export default function Home() {
             <div style={{
               display: "block", textAlign: "center", marginTop: 28, padding: "14px 24px", fontSize: 15,
               borderRadius: 999, border: "1px solid rgba(10,132,255,0.4)",
+              color: "rgba(255,255,255,0.4)", cursor: "default",
+            }}>
+              Notify me when available
+            </div>
+          </div>
+          {/* Classroom tier */}
+          <div style={{
+            flex: "1 1 280px", maxWidth: 360, padding: "36px 32px", borderRadius: 24,
+            border: "1px solid rgba(160,100,255,0.4)", background: "rgba(120,60,255,0.06)",
+            textAlign: "left", position: "relative",
+          }}>
+            <div style={{
+              position: "absolute", top: 20, right: 20,
+              background: "linear-gradient(135deg, #a060ff, #0a84ff)",
+              borderRadius: 20, padding: "4px 12px", fontSize: 11, fontWeight: 700, color: "#fff",
+            }}>COMING SOON</div>
+            <p style={{ fontSize: 13, fontWeight: 600, color: "#a060ff", marginBottom: 8 }}>CLASSROOM</p>
+            <p style={{ fontSize: 42, fontWeight: 900, marginBottom: 4 }}>€49</p>
+            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", marginBottom: 8 }}>per month</p>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginBottom: 28 }}>Up to 30 students · one flat price</p>
+            {["Everything in Pro", "30 student Pro accounts", "Class leaderboard", "Teacher dashboard", "Student performance tracking", "Ideal for finance courses"].map(f => (
+              <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <span style={{ color: "#a060ff", fontSize: 16 }}>✓</span>
+                <span style={{ fontSize: 14, color: "rgba(255,255,255,0.7)" }}>{f}</span>
+              </div>
+            ))}
+            <div style={{
+              display: "block", textAlign: "center", marginTop: 28, padding: "14px 24px", fontSize: 15,
+              borderRadius: 999, border: "1px solid rgba(160,100,255,0.4)",
               color: "rgba(255,255,255,0.4)", cursor: "default",
             }}>
               Notify me when available
