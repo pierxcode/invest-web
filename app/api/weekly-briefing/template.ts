@@ -6,7 +6,7 @@ const CARD = '#ffffff'
 const TEXT = '#111827'
 const MUTED = '#6b7280'
 const BORDER = '#e5e7eb'
-const APP_URL = 'https://investapp.com'
+const APP_URL = 'https://stocksimulator.io'
 
 export function renderBriefingEmail(user: UserData, market: MarketContent): string {
   const totalReturn = user.totalValue - 1_000_000

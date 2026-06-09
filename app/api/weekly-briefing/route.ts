@@ -76,7 +76,7 @@ async function runWeeklyBriefing() {
     const html = renderBriefingEmail(user, market)
     try {
       await resend.emails.send({
-        from: 'Invest <weekly@investapp.com>',
+        from: 'Invest <weekly@stocksimulator.io>',
         to: user.email,
         subject: `Your weekly brief — ${weekRange()}`,
         html,

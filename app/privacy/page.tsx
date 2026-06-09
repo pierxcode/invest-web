@@ -12,8 +12,8 @@ export default function Privacy() {
         ["Data storage", "Your account data is stored securely via Supabase with encryption at rest and in transit."],
         ["No real money", "Invest is a simulator. We never collect payment information, bank details, or financial credentials of any kind."],
         ["Children", "Invest is not directed at children under 13. We do not knowingly collect data from children."],
-        ["Your rights", "You can delete your account and all associated data at any time from the app settings. Contact us at privacy@investapp.com for any data requests."],
-        ["Contact", "Questions? Email us at privacy@investapp.com"],
+        ["Your rights", "You can delete your account and all associated data at any time from the app settings. Contact us at privacy@stocksimulator.io for any data requests."],
+        ["Contact", "Questions? Email us at privacy@stocksimulator.io"],
       ].map(([title, body]) => (
         <div key={title as string} style={{ marginBottom: 32 }}>
           <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{title}</h2>

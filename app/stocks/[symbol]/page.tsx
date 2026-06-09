@@ -137,7 +137,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${symbol} · ${details.name} | Invest Simulator`,
       description: `Practice trading ${symbol} with €1M virtual money. Real prices, zero risk.`,
       type: 'website',
-      url: `https://investapp.com/stocks/${symbol}`,
+      url: `https://stocksimulator.io/stocks/${symbol}`,
     },
   }
 }
@@ -197,8 +197,8 @@ export default async function StockPage({ params }: PageProps) {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Stocks', item: 'https://investapp.com/stocks' },
-          { '@type': 'ListItem', position: 2, name: `${details.name} (${symbol})`, item: `https://investapp.com/stocks/${symbol}` },
+          { '@type': 'ListItem', position: 1, name: 'Stocks', item: 'https://stocksimulator.io/stocks' },
+          { '@type': 'ListItem', position: 2, name: `${details.name} (${symbol})`, item: `https://stocksimulator.io/stocks/${symbol}` },
         ],
       },
       {

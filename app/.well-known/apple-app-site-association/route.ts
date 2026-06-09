@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-// Apple App Site Association — tells iOS that investapp.com links open the Invest app.
+// Apple App Site Association — tells iOS that stocksimulator.io links open the Invest app.
 // The appID format is: <TeamID>.<BundleID>
 // TeamID: Apple Developer → Membership → Team ID (10 chars)
 // BundleID: com.pierstein.simon
