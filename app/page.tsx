@@ -146,7 +146,7 @@ export default function Home() {
           <div className="fade-up-delay-4" id="download" style={{
             display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap",
           }}>
-            <a href="#" className="cta-btn" style={{ padding: "16px 32px", fontSize: 16 }}>
+            <a href="https://apps.apple.com/us/app/invest-stock-simulator/id6761500263" className="cta-btn" style={{ padding: "16px 32px", fontSize: 16 }}>
               ↓ Download on the App Store
             </a>
             <a href="#features" className="outline-btn" style={{ padding: "16px 32px", fontSize: 16 }}>
@@ -346,7 +346,7 @@ export default function Home() {
           <p style={{ fontSize: 18, color: "rgba(255,255,255,0.5)", marginBottom: 40 }}>
             Join thousands of investors learning the market with real data and zero risk.
           </p>
-          <a href="#" className="cta-btn" style={{ padding: "18px 40px", fontSize: 17, display: "inline-block" }}>
+          <a href="https://apps.apple.com/us/app/invest-stock-simulator/id6761500263" className="cta-btn" style={{ padding: "18px 40px", fontSize: 17, display: "inline-block" }}>
             Download Invest — It&apos;s Free
           </a>
         </div>
