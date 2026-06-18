@@ -68,6 +68,7 @@ export default function Home() {
           <span style={{ fontWeight: 700, fontSize: 18, letterSpacing: "-0.02em" }}>Invest</span>
         </div>
         <div style={{ display: "flex", gap: 32, fontSize: 14 }}>
+          <a href="/market" className="nav-link">Market</a>
           <a href="#features" className="nav-link">Features</a>
           <a href="#how" className="nav-link">How it works</a>
           <a href="#pricing" className="nav-link">Pricing</a>

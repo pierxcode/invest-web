@@ -4,7 +4,7 @@ import {
   Home, TrendingUp, Trophy, BookOpen, ChevronRight,
   ExternalLink, Users, BarChart3, ArrowUpRight, ArrowDownRight,
 } from 'lucide-react'
-import InteractiveChart from './InteractiveChart'
+import EngineChart from './EngineChart'
 import BuyPanel from './BuyPanel'
 import DonutChart from './DonutChart'
 
@@ -67,6 +67,20 @@ async function getCandles(symbol: string): Promise<DayAgg[]> {
   } catch { return [] }
 }
 
+// Longer daily history (~5y) for the interactive chart's timeframe tabs.
+async function getHistory(symbol: string): Promise<DayAgg[]> {
+  try {
+    const to = new Date().toISOString().slice(0, 10)
+    const from = new Date(Date.now() - 5 * 365 * 86400000).toISOString().slice(0, 10)
+    const r = await fetch(
+      `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${from}/${to}?adjusted=true&sort=asc&limit=2000&apiKey=${API}`,
+      { next: { revalidate: 3600 } }
+    )
+    const json = await r.json()
+    return json.results ?? []
+  } catch { return [] }
+}
+
 // ─── Formatters ───────────────────────────────────────────────────────────────
 
 function fmt(n: number | undefined, dec = 2): string {
@@ -115,10 +129,11 @@ export default async function StockPage({ params }: PageProps) {
   const { symbol: raw } = await params
   const symbol = raw.toUpperCase()
 
-  const [details, prevClose, candles] = await Promise.all([
+  const [details, prevClose, candles, history] = await Promise.all([
     getTickerDetails(symbol),
     getPrevClose(symbol),
     getCandles(symbol),
+    getHistory(symbol),
   ])
 
   if (!details) notFound()
@@ -388,8 +403,8 @@ export default async function StockPage({ params }: PageProps) {
                 </div>
 
                 {/* Interactive chart — full bleed */}
-                {slimCandles.length > 1 && (
-                  <InteractiveChart candles={slimCandles} isUp={isUp} />
+                {history.length > 1 && (
+                  <EngineChart points={history.map((c) => ({ t: c.t, v: c.c }))} />
                 )}
 
                 {/* Period tabs */}
