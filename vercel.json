@@ -3,6 +3,10 @@
     {
       "path": "/api/weekly-briefing",
       "schedule": "0 9 * * 6"
+    },
+    {
+      "path": "/api/refresh-portfolios",
+      "schedule": "*/30 13-21 * * 1-5"
     }
   ]
 }
