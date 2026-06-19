@@ -14,24 +14,39 @@ const FRAMES: ChartFrame[] = ["1M", "6M", "1Y", "5Y", "MAX"]
  * scrub and the Vercel palette. Colors by performance over the selected window
  * (dotted baseline = window-start).
  */
-export default function EngineChart({ points }: { points: ChartPoint[] }) {
+export default function EngineChart({
+  points,
+  livePrice = null,
+}: {
+  points: ChartPoint[]
+  livePrice?: number | null
+}) {
   const svgRef = useRef<SVGSVGElement>(null)
   const [hover, setHover] = useState<number | null>(null)
   const [frame, setFrame] = useState<ChartFrame>("1Y")
 
   const W = 800
-  const H = 240
+  const H = 168
+
+  // Extend the series to the live price "as of right now" so the line reaches
+  // the current quote, not just the last daily close.
+  const series = useMemo<ChartPoint[]>(() => {
+    if (livePrice == null || points.length === 0) return points
+    const last = points[points.length - 1]
+    if (livePrice === last.v) return points
+    return [...points, { t: Date.now(), v: livePrice }]
+  }, [points, livePrice])
 
   const sel = useMemo(
     () =>
       selectFrame({
-        points,
+        points: series,
         frame,
         now: Date.now(),
         reference: null,
-        inception: points.length ? points[0].t : null,
+        inception: series.length ? series[0].t : null,
       }),
-    [points, frame]
+    [series, frame]
   )
 
   const pts = sel.points
@@ -151,7 +166,7 @@ export default function EngineChart({ points }: { points: ChartPoint[] }) {
               d={geometry.line}
               fill="none"
               stroke={color}
-              strokeWidth="2"
+              strokeWidth="2.6"
               strokeLinecap="round"
               strokeLinejoin="round"
               vectorEffect="non-scaling-stroke"
@@ -174,7 +189,7 @@ export default function EngineChart({ points }: { points: ChartPoint[] }) {
             )}
           </svg>
         ) : (
-          <div className="mt-7 flex h-[240px] items-center justify-center text-sm text-muted-foreground">
+          <div className="mt-7 flex h-[168px] items-center justify-center text-sm text-muted-foreground">
             No data for this range
           </div>
         )}

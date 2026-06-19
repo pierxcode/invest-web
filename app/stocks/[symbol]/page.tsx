@@ -81,6 +81,20 @@ async function getHistory(symbol: string): Promise<DayAgg[]> {
   } catch { return [] }
 }
 
+// Live price snapshot (as of right now) to extend the chart line to the current quote.
+async function getSnapshot(symbol: string): Promise<number | null> {
+  try {
+    const r = await fetch(
+      `https://api.polygon.io/v2/snapshot/locale/us/markets/stocks/tickers/${symbol}?apiKey=${API}`,
+      { next: { revalidate: 30 } }
+    )
+    if (!r.ok) return null
+    const j = await r.json()
+    const t = j.ticker
+    return t?.lastTrade?.p ?? t?.min?.c ?? t?.day?.c ?? t?.prevDay?.c ?? null
+  } catch { return null }
+}
+
 // ─── Formatters ───────────────────────────────────────────────────────────────
 
 function fmt(n: number | undefined, dec = 2): string {
@@ -129,11 +143,12 @@ export default async function StockPage({ params }: PageProps) {
   const { symbol: raw } = await params
   const symbol = raw.toUpperCase()
 
-  const [details, prevClose, candles, history] = await Promise.all([
+  const [details, prevClose, candles, history, livePrice] = await Promise.all([
     getTickerDetails(symbol),
     getPrevClose(symbol),
     getCandles(symbol),
     getHistory(symbol),
+    getSnapshot(symbol),
   ])
 
   if (!details) notFound()
@@ -404,7 +419,7 @@ export default async function StockPage({ params }: PageProps) {
 
                 {/* Interactive chart — full bleed */}
                 {history.length > 1 && (
-                  <EngineChart points={history.map((c) => ({ t: c.t, v: c.c }))} />
+                  <EngineChart points={history.map((c) => ({ t: c.t, v: c.c }))} livePrice={livePrice} />
                 )}
 
                 {/* Period tabs */}

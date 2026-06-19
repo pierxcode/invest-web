@@ -372,7 +372,7 @@ export default function Home() {
           Stock Market Simulator — No real money is used or at risk. For educational purposes only.
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 16 }}>
-          {[["Privacy Policy", "/privacy"], ["Terms", "/terms"], ["Support", "/support"]].map(([label, href]) => (
+          {[["Privacy Policy", "/privacy"], ["Terms", "/terms"], ["Support", "/support"], ["Design", "/design"]].map(([label, href]) => (
             <a key={label} href={href} className="footer-link">{label}</a>
           ))}
         </div>
