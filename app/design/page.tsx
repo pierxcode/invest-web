@@ -100,10 +100,10 @@ export default function DesignSystemPage() {
                 { y: 70, c: "#f5a623" },
                 { y: 95, c: "#2ed3a0" },
               ].map((l, i) => (
-                <g key={i}>
-                  <line x1="0" y1={l.y} x2="240" y2={l.y} stroke={l.c} strokeWidth="2" strokeLinecap="round" />
-                  <line x1="240" y1={l.y} x2="360" y2={l.y} stroke={l.c} strokeWidth="2" strokeDasharray="2 6" opacity="0.5" />
-                  <line x1="360" y1={l.y} x2="600" y2={l.y} stroke={l.c} strokeWidth="2" strokeLinecap="round" />
+                <g key={i} shapeRendering="crispEdges">
+                  <line x1="0" y1={l.y} x2="240" y2={l.y} stroke={l.c} strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                  <line x1="240" y1={l.y} x2="360" y2={l.y} stroke={l.c} strokeWidth="2" strokeDasharray="2 6" opacity="0.55" vectorEffect="non-scaling-stroke" />
+                  <line x1="360" y1={l.y} x2="600" y2={l.y} stroke={l.c} strokeWidth="2" vectorEffect="non-scaling-stroke" />
                 </g>
               ))}
             </svg>
