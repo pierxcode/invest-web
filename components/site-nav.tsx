@@ -1,14 +1,13 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { InvestLogo } from "@/components/logo"
 
 export function SiteNav() {
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-black/70 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2">
-          <svg width="18" height="16" viewBox="0 0 24 22" fill="none" aria-hidden>
-            <path d="M12 0l12 22H0L12 0z" fill="#fff" />
-          </svg>
+          <InvestLogo size={20} className="text-foreground" />
           <span className="text-sm font-semibold text-foreground">Invest</span>
         </Link>
         <nav className="flex items-center gap-1 text-sm">

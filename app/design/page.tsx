@@ -24,6 +24,7 @@ import {
   AlertDescription,
   Avatar,
 } from "@/components/ui"
+import { InvestLogo } from "@/components/logo"
 
 function Section({ id, title, kicker, children }: { id: string; title: string; kicker: string; children: React.ReactNode }) {
   return (
@@ -57,9 +58,7 @@ export default function DesignSystemPage() {
       <header className="sticky top-0 z-20 border-b border-border bg-black/70 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
           <div className="flex items-center gap-2">
-            <svg width="20" height="18" viewBox="0 0 24 22" fill="none" aria-hidden>
-              <path d="M12 0l12 22H0L12 0z" fill="#fff" />
-            </svg>
+            <InvestLogo size={20} className="text-white" />
             <span className="text-sm font-semibold">Invest</span>
             <Badge variant="secondary" className="ml-1">Design</Badge>
           </div>
@@ -175,6 +174,8 @@ export default function DesignSystemPage() {
             <Badge variant="success">+1.24%</Badge>
             <Badge variant="warning">After-hours</Badge>
             <Badge variant="danger">−0.86%</Badge>
+            <Badge variant="blue">Blue</Badge>
+            <Badge variant="purple">Purple</Badge>
           </div>
         </Section>
 
